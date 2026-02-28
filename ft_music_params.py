@@ -11,7 +11,7 @@ TRAIN_FILE = DATA_PATH / "music_request_train_formatted.jsonl"
 VAL_FILE = DATA_PATH / "music_request_val_formatted.jsonl"
 
 PROJECT_NAME = "music-params-ft"
-BASE_MODEL = os.getenv("FT_BASE_MODEL", "mistral-small-latest")
+BASE_MODEL = os.getenv("FT_BASE_MODEL", "mistral-3b-latest")
 TRAIN_RATIO = float(os.getenv("TRAIN_RATIO", "0.9"))
 TRAINING_STEPS = int(os.getenv("TRAINING_STEPS", "35"))
 LEARNING_RATE = float(os.getenv("LEARNING_RATE", "1e-4"))

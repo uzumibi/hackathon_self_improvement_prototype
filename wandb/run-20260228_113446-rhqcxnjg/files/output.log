@@ -1,0 +1,79 @@
+
+=== Iteration 1/1 ===
+[state] {'num_samples': 8, 'training_steps': 5, 'learning_rate': 0.0001, 'focus_axis': None, 'failure_report_path': None, 'policy_path': '/home/ghoti/hackathon_playground/wandb_mcp_challenge/agent_policy.json'}
+[data] skip initial generation: existing rows=16
+[run] python3 ft_music_params.py
+Traceback (most recent call last):
+  File "/home/ghoti/hackathon_playground/ft_music_params.py", line 125, in <module>
+    main()
+  File "/home/ghoti/hackathon_playground/ft_music_params.py", line 109, in main
+    job = client.jobs.create(
+  File "/home/ghoti/.local/lib/python3.10/site-packages/mistralai/jobs.py", line 47, in create
+    for response in single_response:
+  File "/home/ghoti/.local/lib/python3.10/site-packages/mistralai/client.py", line 148, in _request
+    yield self._check_response(response)
+  File "/home/ghoti/.local/lib/python3.10/site-packages/mistralai/client.py", line 77, in _check_response
+    self._check_response_status_codes(response)
+  File "/home/ghoti/.local/lib/python3.10/site-packages/mistralai/client.py", line 62, in _check_response_status_codes
+    raise MistralAPIException.from_response(
+mistralai.exceptions.MistralAPIException: Status: 422. Message: {"detail": "Model not available for this type of fine-tuning (completion). Available model(s): "}
+
+[ft] fine-tuning failed -> fallback evaluation model: mistral-small-latest
+[run] python3 eval_music_params.py
+{
+  "overall_mae": 0.3125,
+  "within_tolerance_rate": 0.0,
+  "mae_per_axis": {
+    "energy": 0.4249999999999999,
+    "warmth": 0.475,
+    "brightness": 0.25625000000000003,
+    "acousticness": 0.20625000000000007,
+    "complexity": 0.17500000000000002,
+    "nostalgia": 0.3375
+  },
+  "failure_counts_per_axis": {
+    "energy": 10,
+    "warmth": 12,
+    "brightness": 7,
+    "acousticness": 7,
+    "complexity": 4,
+    "nostalgia": 9
+  },
+  "failure_report_path": "data/eval_failure_report_iter_1.json"
+}
+
+/home/ghoti/.local/lib/python3.10/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_ref" in ModelCreateRes has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/home/ghoti/.local/lib/python3.10/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.2.2) or chardet (6.0.0.post1)/charset_normalizer (3.3.2) doesn't match a supported version!
+  warnings.warn(
+/home/ghoti/.local/lib/python3.10/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_configuration" in DynamicLeaderboardConfig has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+[36m[1mweave[0m: weave version 0.52.29 is available!  To upgrade, please run:
+[36m[1mweave[0m:  $ pip install weave --upgrade
+[36m[1mweave[0m: Logged in as Weights & Biases user: kazuki-takahashi-research.
+[36m[1mweave[0m: View Weave data at https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/weave
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-4e43-7ca5-b212-86335a7df00f
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-5220-73d8-848f-ced76a4fa19d
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-5541-7ec5-bbba-882b042324f7
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-57a4-71b7-9824-fc713758436a
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-5a06-77e9-b79b-b57417c7f9c2
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-5db9-7b2e-a022-31ca9c2c0acc
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-6454-780f-8737-c1c44f5a9d4e
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-670f-7ba5-83db-9a635f110d18
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-6a51-7ee3-8bcd-197f09e622ce
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-6cab-7c2e-803a-351ef366a16c
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-727d-79d2-a5c8-cf0c72dbcf56
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-7577-79c1-803a-c21934961220
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-785a-7b89-aa4e-e440b41e3d8d
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-7c03-717e-b6c2-7608cba8b28a
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-7e6f-7425-812f-744d3941df42
+[36m[1mweave[0m: 🍩 https://wandb.ai/kazuki-takahashi-research-university-of-tokyo/music-params-eval/r/call/019ca219-8110-78c2-b72b-a4df546e3fd6
+
+[metrics] mae=0.3125 worst_axis=warmth
+[decision] plateau -> steps+10 and lr*0.8 / target data on weak axis: warmth
+[policy] {'updated': True, 'worst_axis': 'warmth', 'path': '/home/ghoti/hackathon_playground/wandb_mcp_challenge/agent_policy.json', 'snapshot': '/home/ghoti/hackathon_playground/wandb_mcp_challenge/generated_skills/policy_iter_01.json'}
+[artifact] /home/ghoti/hackathon_playground/wandb_mcp_challenge/generated_skills/iter_01.json

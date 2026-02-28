@@ -1,7 +1,7 @@
 {
   "proven_improvement": {
-    "baseline_mae": 0.3166666666666667,
-    "best_mae": 0.3166666666666667,
+    "baseline_mae": 0.31250000000000006,
+    "best_mae": 0.31250000000000006,
     "absolute_gain": 0.0,
     "relative_gain_percent": null
   },

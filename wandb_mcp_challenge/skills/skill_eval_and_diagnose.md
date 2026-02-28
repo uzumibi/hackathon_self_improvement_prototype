@@ -42,14 +42,27 @@ Run evaluation, extract actionable metrics reliably, and identify weak parameter
    - `within_tolerance_rate`
    - `mae_per_axis`
 4. Determine `worst_axis` as `argmax(mae_per_axis[axis])`.
-5. If W&B MCP is available, run all discovered loop tools every iteration (best-effort):
-   - `query_wandb_entity_projects`: resolve accessible entity/project
-   - `query_wandb_tool`: fetch run metrics such as accuracy/loss
-   - `count_weave_traces_tool`: count failed traces quickly
-   - `query_weave_traces_tool`: inspect failed inference steps in detail
-   - `query_wandb_support_bot`: ask official bot for W&B usage guidance
-   - `create_wandb_report_tool`: create before/after report for human review
-6. Store MCP tool outputs as `skill_wandb_mcp_inspection` in `generated_skills/iter_XX.json`.
+5. If W&B MCP is available, run tools with **schema-correct arguments** and scoped projects:
+   - First resolve target scope via `query_wandb_entity_projects` and select only:
+     - model/runs project: `music-params-mcp-loop`
+     - weave traces project: `music-params-eval`
+   - Exclude unrelated projects (e.g. `patchtst_*`) from analysis context.
+6. Call each tool with correct argument names:
+   - `query_wandb_entity_projects`:
+     - `{"entity": <selected_entity>}` (or `{}` as fallback)
+   - `query_wandb_tool` (GraphQL is required):
+     - include `query` + `variables` (entity/project/limit)
+     - retrieve recent runs and `summaryMetrics` for before/after comparison
+   - `count_weave_traces_tool`:
+     - `{"entity_name": ..., "project_name": ..., "filters": {"status": "error", "trace_roots_only": true}}`
+   - `query_weave_traces_tool`:
+     - `{"entity_name": ..., "project_name": ..., "filters": {"status": "error", "trace_roots_only": true}, "columns": [...], "limit": 10}`
+   - `query_wandb_support_bot`:
+     - `{"question": "..."}`
+   - `create_wandb_report_tool`:
+     - `{"entity_name": ..., "project_name": ..., "title": ..., "description": ..., "markdown_report_text": ...}`
+7. Record both success and failure details for each tool, including attempted arguments and error text.
+8. Store MCP tool outputs as `skill_wandb_mcp_inspection` in `generated_skills/iter_XX.json`.
 
 ## Notes
 
