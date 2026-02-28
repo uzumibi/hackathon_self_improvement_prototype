@@ -1,0 +1,23 @@
+
+=== Iteration 1/3 ===
+[state] {'num_samples': 8, 'training_steps': 5, 'learning_rate': 0.0001, 'focus_axis': None, 'failure_report_path': None, 'policy_path': '/home/ghoti/hackathon_playground/wandb_mcp_challenge/agent_policy.json'}
+[run] python3 data_generation.py
+Starting generation of 8 samples...
+Error at sample 0: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 1: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 2: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 3: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 4: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 5: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 6: Status: 401. Message: {"detail":"Unauthorized"}
+Error at sample 7: Status: 401. Message: {"detail":"Unauthorized"}
+
+Success! Dataset saved to: data/music_request_dataset.jsonl
+
+[run] python3 ft_music_params.py
+Traceback (most recent call last):
+  File "/home/ghoti/hackathon_playground/ft_music_params.py", line 125, in <module>
+    main()
+  File "/home/ghoti/hackathon_playground/ft_music_params.py", line 85, in main
+    raise ValueError("Need at least 2 rows in music_request_dataset.jsonl")
+ValueError: Need at least 2 rows in music_request_dataset.jsonl

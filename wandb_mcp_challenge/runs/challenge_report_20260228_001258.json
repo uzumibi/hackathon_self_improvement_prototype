@@ -1,0 +1,28 @@
+[
+  {
+    "iteration": 1,
+    "job_id": null,
+    "training_mode": "fallback_base_model",
+    "eval_model": "mistral-small-latest",
+    "eval_summary": {
+      "overall_mae": null,
+      "within_tolerance_rate": null,
+      "mae_per_axis": {},
+      "worst_axis": null,
+      "failure_report_path": null
+    },
+    "best_mae": null,
+    "improvement_vs_baseline": null,
+    "transition_reason": "plateau -> steps+10 and lr*0.8",
+    "policy_update": {
+      "updated": false,
+      "reason": "no worst axis",
+      "path": "/home/ghoti/hackathon_playground/wandb_mcp_challenge/agent_policy.json"
+    },
+    "mcp_snapshot": {
+      "mcp_ok": false,
+      "error": "tools/list failed: 406 Client Error: Not Acceptable for url: https://mcp.withwandb.com/mcp"
+    },
+    "generated_skill_artifact": "/home/ghoti/hackathon_playground/wandb_mcp_challenge/generated_skills/iter_01.json"
+  }
+]
